@@ -67,13 +67,15 @@ public class SecurityConfig {
 		    }
 		    }).and()
 		                        .authorizeHttpRequests()
-		                        .requestMatchers("/login").permitAll()
+		                       .requestMatchers("/login" ,"/register/**","/verifyEmail/**").permitAll()
 		                        .requestMatchers("/all").hasAnyAuthority("ADMIN")
 		                        .anyRequest().authenticated().and()
 		                        .addFilterBefore(new JWTAuthenticationFilter (authMgr),UsernamePasswordAuthenticationFilter.class)
-		                        .addFilterBefore(new JWTAuthorizationFilter(),UsernamePasswordAuthenticationFilter.class);
+		                        .addFilterBefore(new JWTAuthorizationFilter(),UsernamePasswordAuthenticationFilter.class); 
             
 
 		 return http.build();
 	}
+ 	 
+ 	 
 }

@@ -24,6 +24,7 @@ public class User {
 	private String username;
 	private String password;
 	private Boolean enabled;
+	private String email;
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles;
@@ -73,6 +74,12 @@ public class User {
 	public String toString() {
 		return "User [user_id=" + user_id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
 				+ ", roles=" + roles + "]";
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	
